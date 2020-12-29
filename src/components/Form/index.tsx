@@ -8,7 +8,7 @@ const Form = () => (
       <Input placeholder='Destination' />
       <Button>Delete</Button>
     </Container>
-    <Button primary>Search</Button>
+    <Button as='a' href='/map' primary>Search</Button>
   </div>
 );
 

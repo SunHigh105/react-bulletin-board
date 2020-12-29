@@ -3,12 +3,13 @@ import { Button, Container, Header, Image, Menu } from 'semantic-ui-react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Form from './components/Form';
+import Map from './components/Map';
 
 const App: FC = () => (
   <div>
     <Menu fixed='top' inverted>
       <Container>
-        <Menu.Item as='a' header>
+        <Menu.Item as='a' header href='/'>
           <Image size='mini' src='/logo192.png' />
           Distance Matrix
         </Menu.Item>
@@ -18,6 +19,7 @@ const App: FC = () => (
       <Switch>
         <Route path ='/' component={Home} exact />
         <Route path='/form' component={Form} />
+        <Route path='/map' component={Map} />
       </Switch>
       
     </Container>
