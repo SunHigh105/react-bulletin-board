@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { Button, Container, Header, Image, Menu } from 'semantic-ui-react';
 import { Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Form from './components/Form';
-import Map from './components/Map';
+import Home from './Home';
+import Form from './Form';
+import Map from './Map';
 
 const App: FC = () => (
   <div>
