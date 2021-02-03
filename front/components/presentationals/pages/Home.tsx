@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Menu, Container, Comment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 export const Home = () => (
   <div>
@@ -9,7 +10,7 @@ export const Home = () => (
       <Menu.Item icon='redo alternate' as='a' />
       <Menu.Item icon='angle double right' as='a' />
       <Menu.Menu position='right'>
-        <Menu.Item icon='pencil alternate' as='a' />
+        <Menu.Item icon='pencil alternate' as={Link} to='/newpost' />
       </Menu.Menu>
     </Menu>
     <Container>
