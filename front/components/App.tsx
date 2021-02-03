@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
-import { Header, Menu, Sidebar, Container } from 'semantic-ui-react'
+import { Header, Menu, Sidebar, Container } from 'semantic-ui-react';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Home } from './presentationals/pages/Home';
+import { Search } from './presentationals/pages/Search';
+import { MyPage } from './presentationals/pages/MyPage';
 
 const App: FC = () => (
   <div>
@@ -11,22 +15,18 @@ const App: FC = () => (
       visible
       width='thin'
     >
-      <Menu.Item as='a'>Home</Menu.Item>
-      <Menu.Item as='a'>Search</Menu.Item>
-      <Menu.Item as='a'>MyPage</Menu.Item>
+      <Menu.Item as={Link} to='/'>Home</Menu.Item>
+      <Menu.Item as={Link} to='/search'>Search</Menu.Item>
+      <Menu.Item as={Link} to='/mypage'>MyPage</Menu.Item>
     </Sidebar>
     <Container text style={{ marginTop: '2em' }}>
       <Header as='h1'>Bulletin Board</Header>
-      <Menu>
-        <Menu.Item icon='angle double left' as='a' />
-        <Menu.Item icon='redo alternate' as='a' />
-        <Menu.Item icon='angle double right' as='a' />
-        <Menu.Menu position='right'>
-          <Menu.Item icon='pencil alternate' as='a' />
-        </Menu.Menu>
-      </Menu>
       <Container>
-        <Header as='h2'>Main Contents</Header>
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/search' component={Search} />
+          <Route path='/mypage' component={MyPage} />
+        </Switch>
       </Container>
     </Container>
   </div>

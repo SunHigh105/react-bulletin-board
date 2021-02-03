@@ -13,17 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/{any}', function () {
     return view('index');
-});
+})->where('any', '.*');
 
-Route::get('/form', function () {
-    return view('index');
-});
-
-Route::get('/map', function () {
-    return view('index');
-});
 
 Auth::routes();
 
