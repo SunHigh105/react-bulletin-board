@@ -1,9 +1,17 @@
 # Bulletin Board App
 
 ## Requirements
+* Node.js
+* Composer
 * Docker for Mac
 
 ## Setup Development Environment (for Mac OSX)
+* Copy `.env.example` and rename `.env`
+* Generate `APP_KEY`
+```
+php artisan key:generate
+```
+
 * Execute below command
 ```
 ./vendor/bin/sail up
