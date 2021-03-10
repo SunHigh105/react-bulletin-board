@@ -55,6 +55,15 @@ services:
     expose:
       - "8081"
     command: "yarn dev"
+  storybook:
+    image: 'node:15.7.0'
+    user: 'node'
+    working_dir: /home/node/storybook
+    ports:
+      - 6006:6006
+    volumes:
+      - ./:/home/node/storybook
+    command: 'yarn storybook'
 #  pgsql:
 #    image: postgres:13
 #    ports:
