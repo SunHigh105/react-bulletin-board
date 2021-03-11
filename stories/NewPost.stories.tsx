@@ -18,4 +18,5 @@ const Template: Story<ComponentProps<typeof NewPost>> = args => <NewPost {...arg
 export const FirstStory = Template.bind({});
 FirstStory.args = {
   /*👇 The args you need here will depend on your component */
+  
 };
