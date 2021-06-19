@@ -1,18 +1,10 @@
 import React from 'react';
-import { Header, Menu, Container, Comment } from 'semantic-ui-react';
+import { Header, Pagination, Container, Comment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 export const Home = () => (
   <div>
     <Header as='h2'>Home</Header>
-    <Menu>
-      <Menu.Item icon='angle double left' as='a' />
-      <Menu.Item icon='redo alternate' as='a' />
-      <Menu.Item icon='angle double right' as='a' />
-      <Menu.Menu position='right'>
-        <Menu.Item icon='pencil alternate' as={Link} to='/newpost' />
-      </Menu.Menu>
-    </Menu>
     <Container>
       <Comment.Group>
         <Comment>
@@ -30,5 +22,14 @@ export const Home = () => (
         </Comment>
       </Comment.Group>
     </Container>
+    <Pagination
+      defaultActivePage={1}
+      firstItem={null}
+      lastItem={null}
+      pointing
+      secondary
+      totalPages={3}
+      position='center'
+    />
   </div>
 );
