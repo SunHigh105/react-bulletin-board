@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Header, Menu, Sidebar, Container } from 'semantic-ui-react';
+import { Menu, Container, Input } from 'semantic-ui-react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Home } from './presentationals/pages/Home';
 import { NewPost } from './presentationals/pages/NewPost';
@@ -8,28 +8,23 @@ import { MyPage } from './presentationals/pages/MyPage';
 
 const App: FC = () => (
   <div>
-    <Sidebar 
+    <Menu 
       as={Menu}
-      animation='push'
-      inverted
-      vertical
-      visible
-      width='thin'
     >
-      <Menu.Item as={Link} to='/'>Home</Menu.Item>
-      <Menu.Item as={Link} to='/search'>Search</Menu.Item>
-      <Menu.Item as={Link} to='/mypage'>MyPage</Menu.Item>
-    </Sidebar>
+      <Menu.Item header as={Link} to='/'>Photo Gallery</Menu.Item>
+      <Menu.Menu position='right'>
+        <Input icon='search' placeholder='Search...' />
+        <Menu.Item icon='cloud upload' as={Link} to='/newpost' />
+        <Menu.Item as={Link} to='/mypage'>MyPage</Menu.Item>
+      </Menu.Menu>
+    </Menu>
     <Container text style={{ marginTop: '2em' }}>
-      <Header as='h1'>Bulletin Board</Header>
-      <Container>
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/newpost' exact component={NewPost} />
-          <Route path='/search' component={Search} />
-          <Route path='/mypage' component={MyPage} />
-        </Switch>
-      </Container>
+      <Switch>
+        <Route path='/' exact component={Home} />
+        <Route path='/newpost' exact component={NewPost} />
+        <Route path='/search' component={Search} />
+        <Route path='/mypage' component={MyPage} />
+      </Switch>
     </Container>
   </div>
 );
