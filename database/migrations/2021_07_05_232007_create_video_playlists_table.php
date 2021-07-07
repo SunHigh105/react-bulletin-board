@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFlightsTable extends Migration
+class CreateVideoPlaylistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateFlightsTable extends Migration
      */
     public function up()
     {
-        Schema::create('flights', function (Blueprint $table) {
+        Schema::create('video_playlists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('airline');
+            $table->integer('user_id');
+            $table->boolean('is_public');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateFlightsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('flights');
+        Schema::dropIfExists('video_playlists');
     }
 }
