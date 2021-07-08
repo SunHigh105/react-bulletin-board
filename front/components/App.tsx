@@ -5,6 +5,9 @@ import { Home } from './presentationals/pages/Home';
 import { NewPost } from './presentationals/pages/NewPost';
 import { Search } from './presentationals/pages/Search';
 import { MyPage } from './presentationals/pages/MyPage';
+// import { Signin } from './presentationals/pages/Signin';
+import { SigninContainer } from '../components/containers/Signin';
+import { Signup } from './presentationals/pages/Signup';
 
 const App: FC = () => (
   <div>
@@ -16,6 +19,8 @@ const App: FC = () => (
         <Input icon='search' placeholder='Search...' />
         <Menu.Item icon='cloud upload' as={Link} to='/newpost' />
         <Menu.Item as={Link} to='/mypage'>MyPage</Menu.Item>
+        <Menu.Item as={Link} to='/signin'>Signin</Menu.Item>
+        <Menu.Item as={Link} to='/signup'>Signup</Menu.Item>
       </Menu.Menu>
     </Menu>
     <Container text style={{ marginTop: '2em' }}>
@@ -24,6 +29,8 @@ const App: FC = () => (
         <Route path='/newpost' exact component={NewPost} />
         <Route path='/search' component={Search} />
         <Route path='/mypage' component={MyPage} />
+        <Route path='/signin' component={SigninContainer} />
+        <Route path='/signup' component={Signup} />
       </Switch>
     </Container>
   </div>
