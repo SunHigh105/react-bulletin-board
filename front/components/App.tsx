@@ -8,16 +8,17 @@ import { MyPage } from './presentationals/pages/MyPage';
 // import { Signin } from './presentationals/pages/Signin';
 import { SigninContainer } from '../components/containers/Signin';
 import { Signup } from './presentationals/pages/Signup';
+import { RegistVideoPlaylistContaniner } from './containers/RegistVideoPlaylist';
 
 const App: FC = () => (
   <div>
     <Menu 
       as={Menu}
     >
-      <Menu.Item header as={Link} to='/'>Photo Gallery</Menu.Item>
+      <Menu.Item header as={Link} to='/'>Random Training</Menu.Item>
       <Menu.Menu position='right'>
         <Input icon='search' placeholder='Search...' />
-        <Menu.Item icon='cloud upload' as={Link} to='/newpost' />
+        <Menu.Item as={Link} to='/regist/video_playlist'>Regist</Menu.Item>
         <Menu.Item as={Link} to='/mypage'>MyPage</Menu.Item>
         <Menu.Item as={Link} to='/signin'>Signin</Menu.Item>
         <Menu.Item as={Link} to='/signup'>Signup</Menu.Item>
@@ -28,6 +29,7 @@ const App: FC = () => (
         <Route path='/' exact component={Home} />
         <Route path='/newpost' exact component={NewPost} />
         <Route path='/search' component={Search} />
+        <Route path='/regist/video_playlist' component={RegistVideoPlaylistContaniner} />
         <Route path='/mypage' component={MyPage} />
         <Route path='/signin' component={SigninContainer} />
         <Route path='/signup' component={Signup} />
