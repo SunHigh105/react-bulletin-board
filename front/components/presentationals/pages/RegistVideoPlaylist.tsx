@@ -1,21 +1,21 @@
 import React, { FC, FormEvent } from 'react';
-import { Header, Container, Form, Button, Checkbox } from 'semantic-ui-react';
-import { VideoPlaylist, Video } from '../../../services/models';
+import { Header, Container, Form, Button, } from 'semantic-ui-react';
+import { VideoPlaylist } from '../../../services/models';
 
 export interface RegistVideoPlaylistProps {
-  handlePlaylist?: (targetName: string, newValue: string) => void;
-  handleVideos?: () => void;
+  handlePlaylist?: (targetName: string, newValue: string | boolean) => void;
+  handleVideoTitles?: (num: number, newValue: string) => void;
+  handleVideoUrls?: (num: number, newValue: string) => void;
   handleRegist?: (event: FormEvent<HTMLFormElement>) => void;
   playlist?: VideoPlaylist,
-  videos?: Array<Video>
 }
 
 export const RegistVideoPlaylist: FC<RegistVideoPlaylistProps> = ({
   handlePlaylist = () => {},
-  handleVideos = () => {},
+  handleVideoTitles = () => {},
+  handleVideoUrls = () => {},
   handleRegist = () => {},
-  playlist = { name: '', user_id: 0, is_public: false },
-  videos = [],
+  playlist = { name: '', user_id: 0, is_public: true },
 }) => (
   <div>
     <Header as='h2'>Regist Video Playlist</Header>
@@ -29,17 +29,29 @@ export const RegistVideoPlaylist: FC<RegistVideoPlaylistProps> = ({
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePlaylist('name', String(e.target.value))}
             value={playlist.name}
           />
+          <input type="hidden" value={playlist.user_id} />
+        </Form.Field>
+        <Form.Field>          
+          <label>Public</label>
+          <div className="ui toggle checkbox">
+            <input type="checkbox" name="is_public" checked={playlist.is_public} onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePlaylist('is_public', e.target.checked)} />
+            <label></label>
+          </div>
         </Form.Field>
         <Form.Field>
-          <input type="hidden" value={playlist.user_id} />
-          <label>Public</label>
-          <Checkbox toggle />
+          <label>Video URLs</label>
+          {[...Array(5)].map((el, i) => (
+            <div key={i} className="two fields">
+              <label>{ i + 1 }</label>
+              <div className="field">
+                <input type="text" name="video_title" placeholder="Title" onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleVideoTitles(i + 1, String(e.target.value))} />
+              </div>
+              <div className="field">
+                <input type="text" name="video_url" placeholder="URL" onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleVideoUrls(i + 1, String(e.target.value))} />
+              </div>
+            </div>
+          ))}
         </Form.Field>
-        <label>Video URLs</label>
-        <Form.Group>
-          <Form.Input label='Title' />
-          <Form.Input label='URL' />
-        </Form.Group>
         <Button style={{ marginTop: '1em' }} type='submit'>Regist</Button>
       </Form>
     </Container>
