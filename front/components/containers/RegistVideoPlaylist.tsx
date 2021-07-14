@@ -1,9 +1,9 @@
 import React, { useState, useEffect, FC, FormEvent } from 'react';
 import { RegistVideoPlaylist } from '../presentationals/pages/RegistVideoPlaylist';
 import { registVideoPlaylist, registVideos } from '../../services/videos';
-import { Video } from '../../services/models';
 
 export const RegistVideoPlaylistContaniner: FC = () => {
+  // todo: user_idは動的に割り当て
   const [playlist, setPlaylist] = useState({ name: '', user_id: 1, is_public: true });
   const [videoTitles, setVideoTitles] = useState({});
   const [videoUrls, setVideoUrls] = useState({});
@@ -50,29 +50,33 @@ export const RegistVideoPlaylistContaniner: FC = () => {
         isError = true;
         return;
       }
-      videos.push({ name: videoTitles.[num], playlist_id: 1, url: videoUrls.[num]})
+      videos.push({ name: videoTitles.[num], url: videoUrls.[num]})
     });
 
+    // todo: Video URLsのフォーム制御を加え、バリデーションをちゃんとする
     if(Object.keys(videoTitles).length === 0 || Object.keys(videoUrls).length === 0) {
       isError = true;
     }
 
-    // console.log(playlist);
-    // console.log(videos);
-    // console.log(videoTitles);
-    // console.log(videoUrls);
-
+    // 動画URLのバリデーション
     if (isError) {
       alert('Please input both video title and url');
       return;
     }
     
-    // console.log(videoTitles);
-    // console.log(videoUrls);
-    // const playlistRes = await registVideoPlaylist(playlist);
-    // console.log(playlistRes);
-    // const videosRes = registVideos();
-    // console.log(videosRes);
+    const playlistResponse = await registVideoPlaylist(playlist);
+    const videosResponse = await registVideos(videos);
+
+    // 登録成功時
+    if (playlistResponse.isSucceeded && videosResponse.isSucceeded) {
+      alert('Video playlist registration succeeded!');
+      // todo: detail/video_playlistにリダイレクト
+      return;
+    }
+
+    // 登録失敗時
+    alert('Video playlist registration failed.');
+    return;
   };
   
   return (
