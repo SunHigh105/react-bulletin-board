@@ -4,7 +4,7 @@ import { Signin } from '../presentationals/pages/Signin';
 import { ApiConfig } from '../../services/common';
 
 export const SigninContainer: FC = () => {
-  const [values, setValues] = useState({ name: '', password: '' });
+  const [values, setValues] = useState({ email: '', password: '' });
   
   const handleChange = (
     targetName: string,
@@ -13,10 +13,14 @@ export const SigninContainer: FC = () => {
     setValues(v => ({ ...v, [targetName]: newValue }));
   };
   
-  const handleSignin = (e: FormEvent<HTMLFormElement>) => {
-    console.log(e);
-    const res = signin(values);
+  const handleSignin = async (e: FormEvent<HTMLFormElement>) => {
+    const res = await signin(values);
     console.log(res);
+    if (res.isError) {
+      alert('Login Failed.');
+      return;
+    }
+    location.href = '/';
   };
   
   return (

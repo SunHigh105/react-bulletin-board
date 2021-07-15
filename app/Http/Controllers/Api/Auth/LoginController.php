@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Api\Auth;
+// namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -16,7 +18,8 @@ class LoginController extends Controller
         $result = false;
         $status = 401;
         $message = 'User not found';
-        $credentials = $request->only('name', 'password');
+        $user = '';
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $result = false;
             $status = 200;
@@ -35,7 +38,11 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
+        logger(Auth::user());
         Auth::logout();
+        logger(Auth::user());
+        // Auth::user()->tokens()->where('name', 'token-name')->delete();
+        
         return response()->json([
             'result' => true,
             'status' => 200,

@@ -13,19 +13,19 @@ export interface SigninFormProps {
 export const Signin: FC<SigninFormProps> = ({
   handleChange = () => {},
   handleSignin = () => {},
-  values = { name: '', password: '' },
+  values = { email: '', password: '' },
 }) => (
   <div>
     <Header as='h2'>Signin</Header>
     <Container>
       <Form onSubmit={handleSignin}>
         <Form.Field>
-          <label>Name</label>
+          <label>Email</label>
           <input
             type="text"
-            name="name"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('name', String(e.target.value))}
-            value={values.name}
+            name="email"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('email', String(e.target.value))}
+            value={values.email}
           />
         </Form.Field>
         <Form.Field>
