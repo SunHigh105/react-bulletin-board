@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('regist_video_playlist', 'App\Http\Controllers\VideoPlaylistController@registVideoPlaylist');
+Route::post('regist_videos', 'App\Http\Controllers\VideoPlaylistController@registVideos');
+
+Route::post('login', 'App\Http\Controllers\Api\Auth\LoginController@login');
+Route::get('logout', 'App\Http\Controllers\Api\Auth\LoginController@logout');
