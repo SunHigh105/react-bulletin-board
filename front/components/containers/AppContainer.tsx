@@ -29,6 +29,6 @@ export const AppContainer: FC =() => {
   }, []);
   
   return (
-    <App user={user} handleLogout={handleLogout} />
+    <App user={user} isLoggedIn={user.user_id !== '' && user.name !== ''} handleLogout={handleLogout} />
   );
 }
