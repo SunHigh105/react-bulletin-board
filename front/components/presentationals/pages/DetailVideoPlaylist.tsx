@@ -5,15 +5,17 @@ import { Video } from '../../../services/models';
 export interface DetailVideoPlaylistProps {
   playlist?: object,
   videos?: Array<Video>,
-  isLoggedIn?: boolean,
-  userId?: number | string
+  isLoading?: boolean
+  // isLoggedIn?: boolean,
+  // userId?: number | string
 };
 
 export const DetailVideoPlaylist: FC<DetailVideoPlaylistProps> = ({
   playlist = {},
   videos = [],
-  isLoggedIn = false,
-  userId = ''
+  isLoading = false,
+  // isLoggedIn = false,
+  // userId = ''
 }) => (
   <div>
     <Header as='h2'>Video Playlist Detail</Header>
