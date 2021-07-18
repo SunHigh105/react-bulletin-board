@@ -8,6 +8,7 @@ export interface RegistVideoPlaylistProps {
   handleVideoUrls?: (num: number, newValue: string) => void;
   handleRegist?: (event: FormEvent<HTMLFormElement>) => void;
   playlist?: VideoPlaylist,
+  // userId?: number,
 }
 
 export const RegistVideoPlaylist: FC<RegistVideoPlaylistProps> = ({
@@ -15,7 +16,8 @@ export const RegistVideoPlaylist: FC<RegistVideoPlaylistProps> = ({
   handleVideoTitles = () => {},
   handleVideoUrls = () => {},
   handleRegist = () => {},
-  playlist = { name: '', user_id: 0, is_public: true },
+  playlist = { name: '', is_public: true },
+  // userId = ''
 }) => (
   <div>
     <Header as='h2'>Regist Video Playlist</Header>
@@ -29,7 +31,7 @@ export const RegistVideoPlaylist: FC<RegistVideoPlaylistProps> = ({
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handlePlaylist('name', String(e.target.value))}
             value={playlist.name}
           />
-          <input type="hidden" value={playlist.user_id} />
+          {/* <input type="hidden" value={userId} /> */}
         </Form.Field>
         <Form.Field>          
           <label>Public</label>

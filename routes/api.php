@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('regist_video_playlist', 'App\Http\Controllers\VideoPlaylistController@registVideoPlaylist');
 Route::post('regist_videos', 'App\Http\Controllers\VideoPlaylistController@registVideos');
+Route::get('get_video_playlist/{id}', 'App\Http\Controllers\VideoPlaylistController@getVideoPlaylist');
 
 Route::post('login', 'App\Http\Controllers\Api\Auth\LoginController@login');
 Route::get('logout', 'App\Http\Controllers\Api\Auth\LoginController@logout');

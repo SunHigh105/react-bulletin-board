@@ -1,4 +1,4 @@
-import { createAxiosInstance } from "./common";
+import { ApiConfig, createAxiosInstance } from "./common";
 import { VideoPlaylist, Video } from './models';
 
 const succeededResponse = { isSucceeded: true };
@@ -25,3 +25,29 @@ export const registVideos = async (videos?: Array<Video>) => {
     return failedResponse;
   }
 };
+
+const getVideoPlaylist = async (playlistId?: string) => {
+  const instance = createAxiosInstance();
+  try {
+    const res = await instance.get(`/api/get_video_playlist/${playlistId}`);
+    return res.data;
+
+  } catch (e) {
+    return failedResponse;
+  }
+};
+
+// export const getVideoPlaylistFactory = () => {
+//   const instance = createAxiosInstance();
+//   const getVideoPlaylist = async (playlistId?: string) => {
+//     try {
+//       const res = await instance.get(`/api/get_video_playlist/${playlistId}`);
+//       return res.data;
+  
+//     } catch (e) {
+//       return failedResponse;
+//     }
+//   };
+
+//   return getVideoPlaylist;
+// }

@@ -2,9 +2,15 @@ import React, { useState, useEffect, FC, FormEvent } from 'react';
 import { RegistVideoPlaylist } from '../presentationals/pages/RegistVideoPlaylist';
 import { registVideoPlaylist, registVideos } from '../../services/videos';
 
-export const RegistVideoPlaylistContaniner: FC = () => {
+export interface registPlaylistContainerProps {
+  userId:? number | string
+}
+
+export const RegistVideoPlaylistContaniner: FC<registPlaylistContainerProps> = ({
+  userId = '',
+}) => {
   // todo: user_idは動的に割り当て
-  const [playlist, setPlaylist] = useState({ name: '', user_id: 1, is_public: true });
+  const [playlist, setPlaylist] = useState({ name: '', user_id: userId, is_public: true });
   const [videoTitles, setVideoTitles] = useState({});
   const [videoUrls, setVideoUrls] = useState({});
 

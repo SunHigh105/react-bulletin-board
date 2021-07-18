@@ -36,7 +36,14 @@ class VideoPlaylistController extends Controller
 
     public function getVideoPlaylist(Request $request)
     {
-        // todo
+        logger($request->id);
+        $playlist = DB::table('video_playlists')->where('id', $request->id)->get();
+        $videos = DB::table('videos')->where('playlist_id', $request->id)->get();
+        return response()->json([
+            'playlist' => $playlist,
+            'videos' => $videos,
+            'isError' => is_null($playlist) || is_null($videos) 
+        ]);
     }
 
     public function getlatestPlaylistId()
